@@ -1,12 +1,13 @@
 import type { Project } from "./types.ts";
 import stoicWisdomImg from "../../assets/stoic-wisdom-mockup-1_v1.webp";
 import recreatedYouTubeImg from "../../assets/recreated-youtube-mockup-1_v1.webp";
+import stoicStackBetaImg from "../../assets/stoic-stack-beta-mockup-1_v1.webp";
 
 const projects: Project[] = [
   {
     title: "Stoic Stack",
     description: "A MindOS beta that builds empowerment, productivity, and mental health that AI can't replace in a developer's life.",
-    image: "https://via.placeholder.com/150",
+    image: stoicStackBetaImg,
     link: "https://stoicstack.com/"
   },
   {

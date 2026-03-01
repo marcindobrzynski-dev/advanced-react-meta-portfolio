@@ -21,7 +21,7 @@ const LandingSection = () => {
       isDarkBackground
       background={`linear-gradient(to bottom, ${backgroundColor}, #181818)`}
     >
-      <Avatar.Root shape="full" size="2xl" width="100px" height="100px">
+      <Avatar.Root shape="full" size="2xl" width="100px" height="100px" boxShadow="md">
         <Avatar.Fallback name="Random Avatar" />
         <Avatar.Image src="https://i.pravatar.cc/" />
       </Avatar.Root>

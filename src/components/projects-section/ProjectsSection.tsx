@@ -2,6 +2,8 @@ import { Box, Card, Grid, Heading, Text } from "@chakra-ui/react";
 import FullScreenSection from "../shared/FullScreenSection.tsx";
 import { projects } from "./constants.ts";
 import { Image, Button, Link } from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const ProjectsSection = () => {
   return (
@@ -31,7 +33,7 @@ const ProjectsSection = () => {
               </Card.Body>
               <Card.Footer gap="2">
                 <Button variant="surface" asChild>
-                  <Link href={project.link} target="_blank" rel="noopener noreferrer">Explore</Link>
+                  <Link href={project.link} target="_blank" rel="noopener noreferrer">Explore <FontAwesomeIcon icon={faArrowRight} size="1x" /></Link>
                 </Button>
               </Card.Footer>
             </Card.Root>
