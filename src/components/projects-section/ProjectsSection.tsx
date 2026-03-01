@@ -17,7 +17,7 @@ const ProjectsSection = () => {
       <Box width="1200px" margin="0 auto" marginTop="30px">
         <Grid templateColumns="repeat(3, 1fr)" gap="4">
           {projects.map((project) => (
-            <Card.Root maxW="sm" overflow="hidden" boxShadow="md">
+            <Card.Root maxW="sm" overflow="hidden" boxShadow="md" key={project.title}>
               <Image
                 src={project.image}
                 alt={project.title}

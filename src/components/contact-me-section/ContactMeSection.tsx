@@ -11,8 +11,25 @@ import {
   Button
 } from "@chakra-ui/react";
 import { typeOfEnquiriesCollection } from "./constants.ts";
+import { useFormik } from "formik";
+import { validationSchema } from "./contact-me.schema.ts";
+
+const initialValues = {
+  name: "",
+  email: "",
+  typeOfEnquiry: "",
+  message: "",
+};
 
 const ContactMeSection = () => {
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
   return (
     <FullScreenSection id="contact-me" isDarkBackground>
       <Box width="sm" margin="0 auto" textAlign="center">
@@ -21,57 +38,118 @@ const ContactMeSection = () => {
         <Text>Let's build a good future together.</Text>
       </Box>
       <Box width="600px" margin="0 auto" marginTop="30px">
-        <form>
-          <Field.Root marginBottom="25px" required>
+        <form onSubmit={formik.handleSubmit}>
+          <Field.Root 
+            marginBottom="20px"
+            invalid={Boolean(formik.touched.name && formik.errors.name)}
+            required
+          >
             <Field.Label>
               Name <Field.RequiredIndicator />
             </Field.Label>
-            <Input placeholder="Enter your name" />
+            <Input 
+              placeholder="Enter your name" 
+              name="name" 
+              value={formik.values.name} 
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.name && formik.errors.name && (
+              <Field.ErrorText>{formik.errors.name}</Field.ErrorText>
+            )}
           </Field.Root>
 
-          <Field.Root  marginBottom="25px" required>
+          <Field.Root 
+            marginBottom="20px"
+            invalid={Boolean(formik.touched.email && formik.errors.email)}
+            required
+          >
             <Field.Label>
               Email <Field.RequiredIndicator />
             </Field.Label>
-            <Input placeholder="Enter your email" />
-            <Field.HelperText>We'll never share your email.</Field.HelperText>
+            <Input 
+              placeholder="Enter your email" 
+              name="email" 
+              value={formik.values.email} 
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.email && formik.errors.email && (
+              <Field.ErrorText>{formik.errors.email}</Field.ErrorText>
+            )}
           </Field.Root>
 
-          <Select.Root collection={typeOfEnquiriesCollection} size="sm" width="320px" marginBottom="25px">
-            <Select.HiddenSelect />
-            <Select.Label>Select type of enquiry</Select.Label>
-            <Select.Control>
-              <Select.Trigger>
-                <Select.ValueText placeholder="Select type of enquiry" />
-              </Select.Trigger>
-              <Select.IndicatorGroup>
-                <Select.Indicator />
-              </Select.IndicatorGroup>
-            </Select.Control>
-            <Portal>
-              <Select.Positioner>
-                <Select.Content>
-                  {typeOfEnquiriesCollection.items.map((typeOfEnquiry) => (
-                    <Select.ItemGroup key={typeOfEnquiry.value}>
-                      <Select.Item item={typeOfEnquiry}>
-                        {typeOfEnquiry.label}
-                      </Select.Item>
-                    </Select.ItemGroup>
-                  ))}
-                </Select.Content>
-              </Select.Positioner>
-            </Portal>
-          </Select.Root>
+          <Field.Root
+            marginBottom="20px"
+            invalid={Boolean(formik.touched.typeOfEnquiry && formik.errors.typeOfEnquiry)}
+            required
+          >
+            <Field.Label>
+              Select type of enquiry <Field.RequiredIndicator />
+            </Field.Label>
 
-          <Field.Root marginBottom="25px" required>
+            <Select.Root
+              collection={typeOfEnquiriesCollection}
+              value={formik.values.typeOfEnquiry ? [formik.values.typeOfEnquiry] : []}
+              onValueChange={({ value }) => formik.setFieldValue("typeOfEnquiry", value[0] ?? "")}
+              onBlur={formik.handleBlur}
+              size="sm"
+              width="320px"
+            >
+              <Select.HiddenSelect name="typeOfEnquiry" />
+              <Select.Control>
+                <Select.Trigger>
+                  <Select.ValueText placeholder="Select type of enquiry" />
+                </Select.Trigger>
+                <Select.IndicatorGroup>
+                  <Select.Indicator />
+                </Select.IndicatorGroup>
+              </Select.Control>
+              <Portal>
+                <Select.Positioner>
+                  <Select.Content>
+                    {typeOfEnquiriesCollection.items.map((typeOfEnquiry) => (
+                      <Select.ItemGroup key={typeOfEnquiry.value}>
+                        <Select.Item item={typeOfEnquiry}>
+                          {typeOfEnquiry.label}
+                          <Select.ItemIndicator />
+                        </Select.Item>
+                      </Select.ItemGroup>
+                    ))}
+                  </Select.Content>
+                </Select.Positioner>
+              </Portal>
+            </Select.Root>
+
+            {formik.touched.typeOfEnquiry && formik.errors.typeOfEnquiry && (
+              <Field.ErrorText>{formik.errors.typeOfEnquiry}</Field.ErrorText>
+            )}
+          </Field.Root>
+
+          <Field.Root 
+            marginBottom="20px"
+            invalid={Boolean(formik.touched.message && formik.errors.message)}
+            required
+          >
             <Field.Label>
               Your message <Field.RequiredIndicator />
             </Field.Label>
-            <Textarea placeholder="Start typing..." variant="outline" maxLength={500} />
+            <Textarea 
+              placeholder="Start typing..." 
+              variant="outline" 
+              maxLength={500} 
+              name="message" 
+              value={formik.values.message} 
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
             <Field.HelperText>Max 500 characters.</Field.HelperText>
+            {formik.touched.message && formik.errors.message && (
+              <Field.ErrorText>{formik.errors.message}</Field.ErrorText>
+            )}
           </Field.Root>
 
-          <Button type="submit" width="100%">Future is in your hands</Button>
+          <Button type="submit" width="100%">{formik.isSubmitting ? "Checking..." : "Future is in your hands"}</Button>
         </form>
       </Box>
     </FullScreenSection>
