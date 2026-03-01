@@ -8,12 +8,14 @@ interface FullScreenSectionProps extends StackProps {
 const FullScreenSection: React.FC<FullScreenSectionProps> = ({ children, isDarkBackground, ...stackProps }) => {
   return (
     <VStack
+      w="full"
+      minH="100vh"
       backgroundColor={stackProps.backgroundColor ?? "transparent"}
       color={isDarkBackground ? "#FFFFFF" : "#000000"}
+      py="125px"
+      {...stackProps}
     >
-      <VStack width="100vw" height="100vh" maxHeight="100%" maxWidth="100%" {...stackProps}>
-        {children}
-      </VStack>
+      {children}
     </VStack>
   );
 };

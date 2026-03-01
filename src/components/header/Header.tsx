@@ -16,6 +16,7 @@ const Header = () => {
         py="25px"
         px="50px"
         borderBottom="1.5px solid #D79244"
+        zIndex={1000}
       >
         <nav className="flex justify-between items-center">
           <HStack 
