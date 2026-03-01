@@ -25,7 +25,7 @@ const headerLinks: HeaderLinks[] = [
   },
   {
     label: 'Home',
-    url: '/',
+    url: '#',
     icon: faHome,
   },
   {
