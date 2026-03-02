@@ -31,7 +31,10 @@ const ContactMeSection = () => {
   useEffect(() => {
     if (response) {
       onOpen(response.type, response.message);
-      console.log(response);
+    }
+
+    if (response && response.type === "success") {
+      formik.resetForm();
     }
   }, [response]);
 
@@ -40,13 +43,11 @@ const ContactMeSection = () => {
     validationSchema,
     onSubmit: values => {
       submit(values);
-
-      formik.resetForm();
     },
   });
 
   return (
-    <FullScreenSection id="contact-me" isDarkBackground>
+    <FullScreenSection id="contact-me-section" isDarkBackground>
       <Box width="sm" margin="0 auto" textAlign="center">
         <Heading fontSize="2rem" fontWeight="bold" marginBottom="15px">Contact Me</Heading>
 

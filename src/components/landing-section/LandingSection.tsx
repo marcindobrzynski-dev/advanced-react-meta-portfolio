@@ -16,6 +16,7 @@ const LandingSection = () => {
 
   return (
     <FullScreenSection
+      id="home-section"
       justifyContent="center"
       alignItems="center"
       isDarkBackground

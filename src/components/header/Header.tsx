@@ -1,31 +1,10 @@
 import { socials, headerLinks } from './constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Box, Link, HStack, Text } from "@chakra-ui/react"
-import { useEffect, useRef, useCallback } from 'react';
+import useHeaderScroll from './hooks/useHeaderScroll';
 
 const Header = () => {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const prevScrollY = useRef(0);
-
-  const handleScroll = useCallback(() => {
-    if (headerRef.current) {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > prevScrollY.current) {
-        headerRef.current.style.transform = 'translateY(-100%)';
-      } else if (currentScrollY < prevScrollY.current) {
-        headerRef.current.style.transform = 'translateY(0)';
-      }
-
-      prevScrollY.current = currentScrollY;
-    }
-  }, []);
-  
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { headerRef, handleClick } = useHeaderScroll();
 
   return (
     <header>
@@ -54,13 +33,18 @@ const Header = () => {
             textAlign="center"
           >
             {headerLinks.map((headerLink, index) => (
-              <Link 
-                href={headerLink.url} 
-                key={index} 
+              <Link
+                href={headerLink.url}
+                key={index}
                 target={headerLink.url.includes("https://") ? "_blank" : "_self"}
                 fontWeight={index === 0 ? "bold" : "normal"} 
                 fontSize={index === 0 ? "1.2rem" : "1rem"} 
                 textDecoration="none"
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  handleClick(headerLink.url);
+                }}
               >
                 {headerLink.icon && <FontAwesomeIcon icon={headerLink.icon} />}
                 <Text>{headerLink.label}</Text>

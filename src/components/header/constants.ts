@@ -25,16 +25,16 @@ const headerLinks: HeaderLinks[] = [
   },
   {
     label: 'Home',
-    url: '#',
+    url: '#home-section',
     icon: faHome,
   },
   {
     label: 'Projects',
-    url: '#projects',
+    url: '#projects-section',
   },
   {
     label: 'Contact me',
-    url: '#contact-me',
+    url: '#contact-me-section',
   },
 ];
 
