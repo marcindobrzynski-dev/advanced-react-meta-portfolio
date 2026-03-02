@@ -16,7 +16,7 @@ const AppCard = ({ title, description, image, link }: AppCardProps) => {
         src={image}
         alt={title}
         width="100%"
-        height="200px"
+        height={{ base: "160px", md: "200px" }}
         objectFit="cover"
       />
       <Card.Body gap="2">

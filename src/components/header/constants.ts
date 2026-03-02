@@ -20,10 +20,6 @@ const socials: SocialLinks[] = [
 
 const headerLinks: HeaderLinks[] = [
   {
-    label: 'Marcin Renald Dobrzyński',
-    url: 'https://marcindobrzynski.pl/',
-  },
-  {
     label: 'Home',
     url: '#home-section',
     icon: faHome,

@@ -20,11 +20,11 @@ const AppAlert = () => {
         <Alert.Root 
           status={type}
           position="fixed"
-          top="25px"
+          top={{ base: "80px", md: "25px" }}
           left="50%"
           transform="translateX(-50%)"
           zIndex="10000"
-          width="100%"
+          width={{ base: "calc(100% - 32px)", md: "100%" }}
           maxWidth="400px"
           minHeight="100px"
           borderRadius="md"

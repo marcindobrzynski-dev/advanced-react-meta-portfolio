@@ -48,12 +48,12 @@ const ContactMeSection = () => {
 
   return (
     <FullScreenSection id="contact-me-section" isDarkBackground>
-      <Box width="sm" margin="0 auto" textAlign="center">
+      <Box maxW="sm" w="full" px={{ base: 4, md: 0 }} margin="0 auto" textAlign="center">
         <Heading fontSize="2rem" fontWeight="bold" marginBottom="15px">Contact Me</Heading>
 
         <Text>Let's build a good future together.</Text>
       </Box>
-      <Box width="600px" margin="0 auto" marginTop="30px">
+      <Box maxW="600px" w="full" px={{ base: 4, md: 0 }} margin="0 auto" marginTop="30px">
         <form onSubmit={formik.handleSubmit}>
           <Field.Root 
             marginBottom="20px"
@@ -110,7 +110,7 @@ const ContactMeSection = () => {
               onValueChange={({ value }) => formik.setFieldValue("typeOfEnquiry", value[0] ?? "")}
               onBlur={formik.handleBlur}
               size="sm"
-              width="320px"
+              width="full"
             >
               <Select.HiddenSelect name="typeOfEnquiry" />
               <Select.Control>

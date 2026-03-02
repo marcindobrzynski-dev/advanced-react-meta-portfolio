@@ -2,6 +2,7 @@ import { socials, headerLinks } from './constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Box, Link, HStack, Text } from "@chakra-ui/react"
 import useHeaderScroll from './hooks/useHeaderScroll';
+import MobileMenu from './MobileMenu';
 
 const Header = () => {
   const { headerRef, handleClick } = useHeaderScroll();
@@ -17,45 +18,57 @@ const Header = () => {
         bg="#121212"
         color="#FFF"
         w="100%"
-        py="25px"
-        px="50px"
+        py={{ base: "15px", md: "25px" }}
+        px={{ base: "16px", md: "40px" }}
         borderBottom="1.5px solid #D79244"
         zIndex={1000}
         transform="translateY(0px)"
         transition="transform 0.3s ease-in-out"
       >
         <nav className="flex justify-between items-center">
-          <HStack 
-            color="white"
-            gap={8}
-            justifyContent="center"
-            alignItems="center"
-            textAlign="center"
-          >
-            {headerLinks.map((headerLink, index) => (
-              <Link
-                href={headerLink.url}
-                key={index}
-                fontWeight={index === 0 ? "bold" : "normal"} 
-                fontSize={index === 0 ? "1.2rem" : "1rem"} 
-                textDecoration="none"
-                onClick={(e) => {
-                  e.preventDefault();
+          <Box display="flex" alignItems="center">
+            <Link href="https://marcindobrzynski.pl/" target="_blank" rel="noopener noreferrer">
+              <Text fontSize="1.2rem" fontWeight="bold">Marcin Renald Dobrzyński</Text>
+            </Link>
+            
+            <HStack 
+              display={{ base: "none", md: "flex" }}
+              color="white"
+              gap={6}
+              justifyContent="center"
+              alignItems="center"
+              textAlign="center"
+              marginLeft="25px"
+            >
+              {headerLinks.map((headerLink, index) => (
+                <Link
+                  href={headerLink.url}
+                  key={index}
+                  fontSize={{ base: "0.85rem", md: "0.95rem" }}
+                  textDecoration="none"
+                  onClick={(e) => {
+                    e.preventDefault();
+  
+                    handleClick(headerLink.url);
+                  }}
+                >
+                  {headerLink.icon && <FontAwesomeIcon icon={headerLink.icon} />}
+                  <Text>{headerLink.label}</Text>
+                </Link>
+              ))}
+            </HStack>
+          </Box>
 
-                  handleClick(headerLink.url);
-                }}
-              >
-                {headerLink.icon && <FontAwesomeIcon icon={headerLink.icon} />}
-                <Text>{headerLink.label}</Text>
-              </Link>
-            ))}
-          </HStack>
-          <HStack>
+          <HStack display={{ base: "none", md: "flex" }}>
             {socials.map((social, index) => (
               <Link href={social.url} key={index} target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon size="lg" icon={social.icon} />
               </Link>
             ))}
+          </HStack>
+
+          <HStack display={{ base: "flex", md: "none" }}>
+            <MobileMenu />
           </HStack>
         </nav>
       </Box>

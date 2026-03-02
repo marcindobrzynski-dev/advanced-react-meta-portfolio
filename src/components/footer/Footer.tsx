@@ -1,5 +1,5 @@
-import { Box, Link, Text } from "@chakra-ui/react";
-import { footerInfo } from "./constants";
+import { Box } from "@chakra-ui/react";
+import FooterText from "../shared/FooterText";
 
 const Footer = () => {
   return (
@@ -14,11 +14,7 @@ const Footer = () => {
       px="15px"
       borderTop="1.5px solid #D79244"
     >
-      <Text>
-      {footerInfo.yearText} <Link href={footerInfo.authorLink} target="_blank" rel="noopener noreferrer">
-          {footerInfo.authorName}
-        </Link>. {footerInfo.copyrightText}
-      </Text>
+      <FooterText />
     </Box>
   );
 };

@@ -12,7 +12,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({ children, isDarkB
       minH="100vh"
       backgroundColor={stackProps.backgroundColor ?? "transparent"}
       color={isDarkBackground ? "#FFFFFF" : "#000000"}
-      py="125px"
+      py={{ base: "80px", md: "125px" }}
       {...stackProps}
     >
       {children}
