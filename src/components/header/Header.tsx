@@ -1,11 +1,36 @@
 import { socials, headerLinks } from './constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Box, Link, HStack, Text } from "@chakra-ui/react"
+import { useEffect, useRef, useCallback } from 'react';
 
 const Header = () => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const prevScrollY = useRef(0);
+
+  const handleScroll = useCallback(() => {
+    if (headerRef.current) {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > prevScrollY.current) {
+        headerRef.current.style.transform = 'translateY(-100%)';
+      } else if (currentScrollY < prevScrollY.current) {
+        headerRef.current.style.transform = 'translateY(0)';
+      }
+
+      prevScrollY.current = currentScrollY;
+    }
+  }, []);
+  
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <header>
       <Box 
+        ref={headerRef}
         position="fixed" 
         top={0} 
         left={0} 
@@ -17,6 +42,8 @@ const Header = () => {
         px="50px"
         borderBottom="1.5px solid #D79244"
         zIndex={1000}
+        transform="translateY(0px)"
+        transition="transform 0.3s ease-in-out"
       >
         <nav className="flex justify-between items-center">
           <HStack 
