@@ -3,6 +3,7 @@ import LandingSection from './components/landing-section/LandingSection.tsx';
 import ProjectsSection from './components/projects-section/ProjectsSection.tsx';
 import ContactMeSection from './components/contact-me-section/ContactMeSection.tsx';
 import AppAlert from './components/shared/AppAlert.tsx';
+import Footer from './components/footer/Footer.tsx';
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
         <ContactMeSection />
       </main>
       <footer>
-        
+        <Footer />
       </footer>
     </>
   );
