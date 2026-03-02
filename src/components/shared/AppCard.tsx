@@ -21,13 +21,13 @@ const AppCard = ({ title, description, image, link }: AppCardProps) => {
       />
       <Card.Body gap="2">
         <Card.Title>{title}</Card.Title>
-        <Card.Description>
-          {description}
-        </Card.Description>
+        <Card.Description>{description}</Card.Description>
       </Card.Body>
       <Card.Footer gap="2">
         <Button variant="surface" asChild>
-          <Link href={link} target="_blank" rel="noopener noreferrer">Explore <FontAwesomeIcon icon={faArrowRight} size="1x" /></Link>
+          <Link href={link} target="_blank" rel="noopener noreferrer">
+            Explore <FontAwesomeIcon icon={faArrowRight} size="1x" />
+          </Link>
         </Button>
       </Card.Footer>
     </Card.Root>

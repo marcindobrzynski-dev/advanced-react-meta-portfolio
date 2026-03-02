@@ -1,10 +1,17 @@
-import { Button, CloseButton, Drawer, Link, Portal, Box } from "@chakra-ui/react"
-import { useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
-import { headerLinks, socials } from "./constants"
-import useHeaderScroll from "./hooks/useHeaderScroll"
-import FooterText from "../shared/FooterText"
+import {
+  Button,
+  CloseButton,
+  Drawer,
+  Link,
+  Portal,
+  Box,
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { headerLinks, socials } from "./constants";
+import useHeaderScroll from "./hooks/useHeaderScroll";
+import FooterText from "../shared/FooterText";
 
 const MobileMenu = () => {
   const [open, setOpen] = useState(false);
@@ -24,14 +31,10 @@ const MobileMenu = () => {
             <Drawer.Header>
               <Drawer.Title>Menu</Drawer.Title>
             </Drawer.Header>
-            <Drawer.Body
-              display="flex"
-              flexDirection="column"
-              gap="10px"
-            >
+            <Drawer.Body display="flex" flexDirection="column" gap="10px">
               {headerLinks.map((headerLink) => (
-                <Link 
-                  href={headerLink.url} 
+                <Link
+                  href={headerLink.url}
                   key={headerLink.label}
                   backgroundColor="rgba(255, 255, 255, 0.1)"
                   color="white"
@@ -54,7 +57,12 @@ const MobileMenu = () => {
 
               <Box display="flex" gap="10px" marginTop="15px">
                 {socials.map((social, index) => (
-                  <Link href={social.url} key={index} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href={social.url}
+                    key={index}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FontAwesomeIcon size="xl" icon={social.icon} />
                   </Link>
                 ))}

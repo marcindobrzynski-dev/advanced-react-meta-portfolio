@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { SubmitResponse, SubmitData } from "./types";
 
-const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const useSubmit = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
@@ -19,14 +19,14 @@ const useSubmit = () => {
       }
 
       setResponse({
-        type: 'success',
+        type: "success",
         message: `Thanks for your submission ${data.name}, we will get back to you shortly!`,
       });
-    } catch (error) {
+    } catch {
       setResponse({
-        type: 'error',
-        message: 'Something went wrong, please try again later!',
-      })
+        type: "error",
+        message: "Something went wrong, please try again later!",
+      });
     } finally {
       setLoading(false);
     }

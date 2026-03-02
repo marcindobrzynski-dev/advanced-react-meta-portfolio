@@ -5,7 +5,11 @@ interface FullScreenSectionProps extends StackProps {
   isDarkBackground: boolean;
 }
 
-const FullScreenSection: React.FC<FullScreenSectionProps> = ({ children, isDarkBackground, ...stackProps }) => {
+const FullScreenSection: React.FC<FullScreenSectionProps> = ({
+  children,
+  isDarkBackground,
+  ...stackProps
+}) => {
   return (
     <VStack
       w="full"

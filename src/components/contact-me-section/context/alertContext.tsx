@@ -21,7 +21,8 @@ export const AlertProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         ...state,
         onOpen: (type, message) => setState({ isOpen: true, type, message }),
-        onClose: () => setState({ isOpen: false, type: "success", message: "" }),
+        onClose: () =>
+          setState({ isOpen: false, type: "success", message: "" }),
       }}
     >
       {children}

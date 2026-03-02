@@ -13,15 +13,15 @@ A modern, single-page portfolio website built with React 19, TypeScript, and Vit
 
 ## Tech Stack
 
-| Category | Technology |
-|---|---|
-| Framework | [React 19](https://react.dev/) with [TypeScript 5.9](https://www.typescriptlang.org/) |
-| Build Tool | [Vite 7](https://vite.dev/) |
-| UI Library | [Chakra UI 3](https://www.chakra-ui.com/) |
-| CSS | [Tailwind CSS 4](https://tailwindcss.com/) |
-| Forms | [Formik](https://formik.org/) + [Yup](https://github.com/jquense/yup) |
-| Icons | [FontAwesome 7](https://fontawesome.com/), [React Icons](https://react-icons.github.io/react-icons/) |
-| Theme | [next-themes](https://github.com/pacocoursey/next-themes) (dark/light mode) |
+| Category   | Technology                                                                                           |
+| ---------- | ---------------------------------------------------------------------------------------------------- |
+| Framework  | [React 19](https://react.dev/) with [TypeScript 5.9](https://www.typescriptlang.org/)                |
+| Build Tool | [Vite 7](https://vite.dev/)                                                                          |
+| UI Library | [Chakra UI 3](https://www.chakra-ui.com/)                                                            |
+| CSS        | [Tailwind CSS 4](https://tailwindcss.com/)                                                           |
+| Forms      | [Formik](https://formik.org/) + [Yup](https://github.com/jquense/yup)                                |
+| Icons      | [FontAwesome 7](https://fontawesome.com/), [React Icons](https://react-icons.github.io/react-icons/) |
+| Theme      | [next-themes](https://github.com/pacocoursey/next-themes) (dark/light mode)                          |
 
 ## Getting Started
 
@@ -55,22 +55,22 @@ The app will be available at `http://localhost:5173`.
 
 ## Available Scripts
 
-| Script | Command | Description |
-|---|---|---|
-| `dev` | `npm run dev` | Start the Vite development server with hot reload |
-| `build` | `npm run build` | Type-check with TypeScript and build for production |
-| `lint` | `npm run lint` | Run ESLint across the project |
-| `preview` | `npm run preview` | Preview the production build locally |
+| Script    | Command           | Description                                         |
+| --------- | ----------------- | --------------------------------------------------- |
+| `dev`     | `npm run dev`     | Start the Vite development server with hot reload   |
+| `build`   | `npm run build`   | Type-check with TypeScript and build for production |
+| `lint`    | `npm run lint`    | Run ESLint across the project                       |
+| `preview` | `npm run preview` | Preview the production build locally                |
 
 ## Project Scope
 
 The portfolio is a single-page application with anchor-based smooth-scroll navigation. It is organized into the following sections:
 
-- **Header** — Fixed navigation bar that auto-hides on scroll, with links to each section and social icons (GitHub, LinkedIn, email).
-- **Landing** — Hero section with avatar, name, and bio introduction with a randomized background color accent.
-- **Projects** — Showcase of three portfolio projects displayed as cards with images, descriptions, and external links.
-- **Contact** — Form with name, email, enquiry type, and message fields. Validated in real-time using Formik and Yup. Submissions are currently mocked (no backend).
-- **Footer** — Copyright notice with author link.
+- **Header** - Fixed navigation bar that auto-hides on scroll, with links to each section and social icons (GitHub, LinkedIn, email).
+- **Landing** - Hero section with avatar, name, and bio introduction with a randomized background color accent.
+- **Projects** - Showcase of three portfolio projects displayed as cards with images, descriptions, and external links.
+- **Contact** - Form with name, email, enquiry type, and message fields. Validated in real-time using Formik and Yup. Submissions are currently mocked (no backend).
+- **Footer** - Copyright notice with author link.
 
 ### Project Structure
 

@@ -3,6 +3,6 @@ interface Project {
   description: string;
   image: string;
   link: string;
-};
+}
 
 export type { Project };

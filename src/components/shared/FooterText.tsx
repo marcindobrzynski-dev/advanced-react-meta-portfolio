@@ -3,9 +3,17 @@ import { footerInfo } from "../footer/constants";
 
 const FooterText = () => {
   return (
-    <Text>{footerInfo.yearText} <Link href={footerInfo.authorLink} target="_blank" rel="noopener noreferrer">
-      {footerInfo.authorName}
-    </Link>. {footerInfo.copyrightText}</Text>
+    <Text>
+      {footerInfo.yearText}{" "}
+      <Link
+        href={footerInfo.authorLink}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {footerInfo.authorName}
+      </Link>
+      . {footerInfo.copyrightText}
+    </Text>
   );
 };
 

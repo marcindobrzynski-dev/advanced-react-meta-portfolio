@@ -1,7 +1,7 @@
 interface SubmitResponse {
-  type: 'success' | 'error';
+  type: "success" | "error";
   message: string;
-};
+}
 
 interface SubmitData {
   name: string;

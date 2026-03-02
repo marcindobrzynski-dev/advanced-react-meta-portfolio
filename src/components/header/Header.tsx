@@ -1,20 +1,20 @@
-import { socials, headerLinks } from './constants';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Box, Link, HStack, Text } from "@chakra-ui/react"
-import useHeaderScroll from './hooks/useHeaderScroll';
-import MobileMenu from './MobileMenu';
+import { socials, headerLinks } from "./constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Box, Link, HStack, Text } from "@chakra-ui/react";
+import useHeaderScroll from "./hooks/useHeaderScroll";
+import MobileMenu from "./MobileMenu";
 
 const Header = () => {
   const { headerRef, handleClick } = useHeaderScroll();
 
   return (
     <header>
-      <Box 
+      <Box
         ref={headerRef}
-        position="fixed" 
-        top={0} 
-        left={0} 
-        right={0} 
+        position="fixed"
+        top={0}
+        left={0}
+        right={0}
         bg="#121212"
         color="#FFF"
         w="100%"
@@ -27,11 +27,17 @@ const Header = () => {
       >
         <nav className="flex justify-between items-center">
           <Box display="flex" alignItems="center">
-            <Link href="https://marcindobrzynski.pl/" target="_blank" rel="noopener noreferrer">
-              <Text fontSize="1.2rem" fontWeight="bold">Marcin Renald Dobrzyński</Text>
+            <Link
+              href="https://marcindobrzynski.pl/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Text fontSize="1.2rem" fontWeight="bold">
+                Marcin Renald Dobrzyński
+              </Text>
             </Link>
-            
-            <HStack 
+
+            <HStack
               display={{ base: "none", md: "flex" }}
               color="white"
               gap={6}
@@ -48,11 +54,13 @@ const Header = () => {
                   textDecoration="none"
                   onClick={(e) => {
                     e.preventDefault();
-  
+
                     handleClick(headerLink.url);
                   }}
                 >
-                  {headerLink.icon && <FontAwesomeIcon icon={headerLink.icon} />}
+                  {headerLink.icon && (
+                    <FontAwesomeIcon icon={headerLink.icon} />
+                  )}
                   <Text>{headerLink.label}</Text>
                 </Link>
               ))}
@@ -61,7 +69,12 @@ const Header = () => {
 
           <HStack display={{ base: "none", md: "flex" }}>
             {socials.map((social, index) => (
-              <Link href={social.url} key={index} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={social.url}
+                key={index}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FontAwesomeIcon size="lg" icon={social.icon} />
               </Link>
             ))}

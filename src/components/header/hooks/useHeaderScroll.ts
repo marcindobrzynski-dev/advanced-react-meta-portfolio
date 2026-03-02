@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback } from "react";
 
 const useHeaderScroll = () => {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +21,7 @@ const useHeaderScroll = () => {
         block: "start",
       });
     }
-  }
+  };
 
   const handleScroll = useCallback(() => {
     cancelAnimationFrame(rafId.current);
@@ -32,16 +32,18 @@ const useHeaderScroll = () => {
       const currentScrollY = window.scrollY;
 
       headerRef.current.style.transform =
-        currentScrollY > prevScrollY.current ? 'translateY(-100%)' : 'translateY(0)';
+        currentScrollY > prevScrollY.current
+          ? "translateY(-100%)"
+          : "translateY(0)";
 
       prevScrollY.current = currentScrollY;
     });
   }, []);
-  
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
   return { headerRef, handleClick };

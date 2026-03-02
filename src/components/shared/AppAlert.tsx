@@ -17,7 +17,7 @@ const AppAlert = () => {
   return (
     <>
       {isOpen && (
-        <Alert.Root 
+        <Alert.Root
           status={type}
           position="fixed"
           top={{ base: "80px", md: "25px" }}
@@ -33,12 +33,12 @@ const AppAlert = () => {
           <Alert.Indicator />
           <Alert.Content>
             <Alert.Title fontSize="lg" fontWeight="bold">
-              {isSuccess ? 'All good!' : 'Oops!'}
-              </Alert.Title>
+              {isSuccess ? "All good!" : "Oops!"}
+            </Alert.Title>
             <Alert.Description>{message}</Alert.Description>
           </Alert.Content>
         </Alert.Root>
-      )}      
+      )}
     </>
   );
 };

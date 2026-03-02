@@ -8,7 +8,7 @@ import {
   Select,
   Portal,
   Textarea,
-  Button
+  Button,
 } from "@chakra-ui/react";
 import { typeOfEnquiriesCollection } from "./constants.ts";
 import { useFormik } from "formik";
@@ -28,6 +28,14 @@ const ContactMeSection = () => {
   const { isLoading, response, submit } = useSubmit();
   const { onOpen } = useAlertContext();
 
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values) => {
+      submit(values);
+    },
+  });
+
   useEffect(() => {
     if (response) {
       onOpen(response.type, response.message);
@@ -38,24 +46,30 @@ const ContactMeSection = () => {
     }
   }, [response]);
 
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: values => {
-      submit(values);
-    },
-  });
-
   return (
     <FullScreenSection id="contact-me-section" isDarkBackground>
-      <Box maxW="sm" w="full" px={{ base: 4, md: 0 }} margin="0 auto" textAlign="center">
-        <Heading fontSize="2rem" fontWeight="bold" marginBottom="15px">Contact Me</Heading>
+      <Box
+        maxW="sm"
+        w="full"
+        px={{ base: 4, md: 0 }}
+        margin="0 auto"
+        textAlign="center"
+      >
+        <Heading fontSize="2rem" fontWeight="bold" marginBottom="15px">
+          Contact Me
+        </Heading>
 
         <Text>Let's build a good future together.</Text>
       </Box>
-      <Box maxW="600px" w="full" px={{ base: 4, md: 0 }} margin="0 auto" marginTop="30px">
+      <Box
+        maxW="600px"
+        w="full"
+        px={{ base: 4, md: 0 }}
+        margin="0 auto"
+        marginTop="30px"
+      >
         <form onSubmit={formik.handleSubmit}>
-          <Field.Root 
+          <Field.Root
             marginBottom="20px"
             invalid={Boolean(formik.touched.name && formik.errors.name)}
             required
@@ -63,10 +77,10 @@ const ContactMeSection = () => {
             <Field.Label>
               Name <Field.RequiredIndicator />
             </Field.Label>
-            <Input 
-              placeholder="Enter your name" 
-              name="name" 
-              value={formik.values.name} 
+            <Input
+              placeholder="Enter your name"
+              name="name"
+              value={formik.values.name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -75,7 +89,7 @@ const ContactMeSection = () => {
             )}
           </Field.Root>
 
-          <Field.Root 
+          <Field.Root
             marginBottom="20px"
             invalid={Boolean(formik.touched.email && formik.errors.email)}
             required
@@ -83,10 +97,10 @@ const ContactMeSection = () => {
             <Field.Label>
               Email <Field.RequiredIndicator />
             </Field.Label>
-            <Input 
-              placeholder="Enter your email" 
-              name="email" 
-              value={formik.values.email} 
+            <Input
+              placeholder="Enter your email"
+              name="email"
+              value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -97,7 +111,9 @@ const ContactMeSection = () => {
 
           <Field.Root
             marginBottom="20px"
-            invalid={Boolean(formik.touched.typeOfEnquiry && formik.errors.typeOfEnquiry)}
+            invalid={Boolean(
+              formik.touched.typeOfEnquiry && formik.errors.typeOfEnquiry,
+            )}
             required
           >
             <Field.Label>
@@ -106,8 +122,12 @@ const ContactMeSection = () => {
 
             <Select.Root
               collection={typeOfEnquiriesCollection}
-              value={formik.values.typeOfEnquiry ? [formik.values.typeOfEnquiry] : []}
-              onValueChange={({ value }) => formik.setFieldValue("typeOfEnquiry", value[0] ?? "")}
+              value={
+                formik.values.typeOfEnquiry ? [formik.values.typeOfEnquiry] : []
+              }
+              onValueChange={({ value }) =>
+                formik.setFieldValue("typeOfEnquiry", value[0] ?? "")
+              }
               onBlur={formik.handleBlur}
               size="sm"
               width="full"
@@ -142,7 +162,7 @@ const ContactMeSection = () => {
             )}
           </Field.Root>
 
-          <Field.Root 
+          <Field.Root
             marginBottom="20px"
             invalid={Boolean(formik.touched.message && formik.errors.message)}
             required
@@ -150,12 +170,12 @@ const ContactMeSection = () => {
             <Field.Label>
               Your message <Field.RequiredIndicator />
             </Field.Label>
-            <Textarea 
-              placeholder="Start typing..." 
-              variant="outline" 
-              maxLength={500} 
-              name="message" 
-              value={formik.values.message} 
+            <Textarea
+              placeholder="Start typing..."
+              variant="outline"
+              maxLength={500}
+              name="message"
+              value={formik.values.message}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -165,7 +185,9 @@ const ContactMeSection = () => {
             )}
           </Field.Root>
 
-          <Button type="submit" width="100%" loading={isLoading}>Future is in your hands</Button>
+          <Button type="submit" width="100%" loading={isLoading}>
+            Future is in your hands
+          </Button>
         </form>
       </Box>
     </FullScreenSection>
