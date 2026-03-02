@@ -1,7 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import type { AlertState, AlertContextValue } from "./types";
 
-const AlertContext = createContext<AlertContextValue | undefined>(undefined);
+const AlertContext = createContext<AlertContextValue>({
+  isOpen: false,
+  type: "success",
+  message: "",
+  onOpen: () => {},
+  onClose: () => {},
+});
 
 export const AlertProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, setState] = useState<AlertState>({

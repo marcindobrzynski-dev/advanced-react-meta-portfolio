@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { SubmitResponse } from "./types";
+import type { SubmitResponse, SubmitData } from "./types";
 
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -7,7 +7,7 @@ const useSubmit = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [response, setResponse] = useState<SubmitResponse | null>(null);
 
-  const submit = async (data: any) => {
+  const submit = async (data: SubmitData) => {
     const random = Math.random();
     setLoading(true);
 
@@ -20,7 +20,7 @@ const useSubmit = () => {
 
       setResponse({
         type: 'success',
-        message: `Thanks for your submission ${data.firstName}, we will get back to you shortly!`,
+        message: `Thanks for your submission ${data.name}, we will get back to you shortly!`,
       });
     } catch (error) {
       setResponse({

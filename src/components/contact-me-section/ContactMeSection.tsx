@@ -13,6 +13,9 @@ import {
 import { typeOfEnquiriesCollection } from "./constants.ts";
 import { useFormik } from "formik";
 import { validationSchema } from "./contact-me.schema.ts";
+import useSubmit from "./hooks/useSubmit.ts";
+import { useAlertContext } from "./context/alertContext.tsx";
+import { useEffect } from "react";
 
 const initialValues = {
   name: "",
@@ -22,11 +25,23 @@ const initialValues = {
 };
 
 const ContactMeSection = () => {
+  const { isLoading, response, submit } = useSubmit();
+  const { onOpen } = useAlertContext();
+
+  useEffect(() => {
+    if (response) {
+      onOpen(response.type, response.message);
+      console.log(response);
+    }
+  }, [response]);
+
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      submit(values);
+
+      formik.resetForm();
     },
   });
 
@@ -149,7 +164,7 @@ const ContactMeSection = () => {
             )}
           </Field.Root>
 
-          <Button type="submit" width="100%">{formik.isSubmitting ? "Checking..." : "Future is in your hands"}</Button>
+          <Button type="submit" width="100%" loading={isLoading}>Future is in your hands</Button>
         </form>
       </Box>
     </FullScreenSection>

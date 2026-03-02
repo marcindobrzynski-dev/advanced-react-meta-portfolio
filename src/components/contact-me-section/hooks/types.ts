@@ -3,4 +3,11 @@ interface SubmitResponse {
   message: string;
 };
 
-export type { SubmitResponse };
+interface SubmitData {
+  name: string;
+  email: string;
+  typeOfEnquiry: string;
+  message: string;
+}
+
+export type { SubmitResponse, SubmitData };
