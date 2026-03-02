@@ -83,7 +83,7 @@ src/
 │   ├── header/                      # Navigation bar with scroll hook
 │   ├── landing-section/             # Hero/intro section
 │   ├── projects-section/            # Project cards grid
-│   ├── shared/                      # Reusable components (AppAlert, AppCard, FullScreenSection)
+│   ├── shared/                      # Reusable components
 │   └── ui/                          # Chakra UI provider, color mode, toaster
 ├── App.tsx                          # Root component
 ├── main.tsx                         # Entry point
