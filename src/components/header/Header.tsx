@@ -36,7 +36,6 @@ const Header = () => {
               <Link
                 href={headerLink.url}
                 key={index}
-                target={headerLink.url.includes("https://") ? "_blank" : "_self"}
                 fontWeight={index === 0 ? "bold" : "normal"} 
                 fontSize={index === 0 ? "1.2rem" : "1rem"} 
                 textDecoration="none"

@@ -3,8 +3,15 @@ import { useEffect, useRef, useCallback } from 'react';
 const useHeaderScroll = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const prevScrollY = useRef(0);
+  const rafId = useRef(0);
 
   const handleClick = (anchor: string) => {
+    if (!anchor.startsWith("#")) {
+      window.open(anchor, "_blank", "noopener, noreferrer");
+
+      return;
+    }
+
     const id = anchor.replace("#", "");
     const element = document.getElementById(id);
 
@@ -17,24 +24,25 @@ const useHeaderScroll = () => {
   }
 
   const handleScroll = useCallback(() => {
-    if (headerRef.current) {
+    cancelAnimationFrame(rafId.current);
+
+    rafId.current = requestAnimationFrame(() => {
+      if (!headerRef.current) return;
+
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > prevScrollY.current) {
-        headerRef.current.style.transform = 'translateY(-100%)';
-      } else if (currentScrollY < prevScrollY.current) {
-        headerRef.current.style.transform = 'translateY(0)';
-      }
+      headerRef.current.style.transform =
+        currentScrollY > prevScrollY.current ? 'translateY(-100%)' : 'translateY(0)';
 
       prevScrollY.current = currentScrollY;
-    }
+    });
   }, []);
   
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   return { headerRef, handleClick };
 };
